@@ -1,6 +1,5 @@
 let head = function(first) {
-  first = first[0];
-  return first;
+  return first[0];
 };
 
 let assertEqual = function(actual, expected) {
