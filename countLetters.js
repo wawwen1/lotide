@@ -1,5 +1,5 @@
-const countLetters = function(sentence) {
-  let results = {};
+const countLetters = (sentence) => {
+  const results = {};
   let words = sentence.replace(/\s/g,'');       //remove blank spaces from input
   for (let letters of words) {
     if (results[letters]) {
@@ -11,4 +11,4 @@ const countLetters = function(sentence) {
   return results;
 };
 
-console.log(countLetters('niceeeeeee job'));
+module.exports = countLetters;
