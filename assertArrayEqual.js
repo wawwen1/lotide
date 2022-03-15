@@ -1,41 +1,16 @@
-let assertEqual = function(actual, expected) {
-  let failed = `😭😭 Assertion Failed: ${actual} !== ${expected}`;
-  let pass = `🥰🥰 Assertion Passed: ${actual} === ${expected}`;
-  if (actual === expected) {
-    console.log(pass);
-    return;
+const eqArrays = require('./eqArrays');
+
+let assertArrayEqual = (arr1, arr2) => {       //pass/fail msg for eqArrays
+  if (eqArrays(arr1, arr2)) {
+    console.log(`👍 [PASS] Assertion: ${arr1} === ${arr2}`);
   } else {
-    console.log(failed);
-    return;
+    console.log(`😭 [FAIL] Assertion: ${arr1} !== ${arr2}`);
   }
 };
 
-let eqArrays = function(arr1, arr2) {       //returns true/false if arrays match or not
- 
-  if (arr1.length !== arr2.length) {
-    return false;
-  }
+module.exports = assertArrayEqual;
 
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return false;
-    }
-  }
-  return true;
-};
+assertArrayEqual([1, 2, 3], [3, 2, 1]); // => false
+assertArrayEqual(["1", "2", "3"], ["1", "2", "3"]); // => true
+assertArrayEqual(["1", "2", "3"], ["1", "2", 3]); // => false
 
-let assertArrayEqual = function(arr1, arr2) {       //pass/fail msg for eqArrays
-
-  if (eqArrays === false) {
-    console.log(`🤡 🤡 🤡 Assertion Failed: ${arr1} !== ${arr2}`);
-    return;
-  } else {
-    console.log(`👍 👍 👍 Assertion Passed: ${arr1} === ${arr2}`);
-    return;
-  }
-};
-
-assertArrayEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => true
-assertArrayEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => false
-assertArrayEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => true
-assertArrayEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => false
