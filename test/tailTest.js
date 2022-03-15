@@ -1,13 +1,8 @@
 const tail = require('../tail');
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 
-//Test Case 1: Check to see if it removes head
-let result = tail(["Hi", "Eat", "Food", "Now"]);
-assertEqual(result.length, 3);
-assertEqual(result[0], "Eat");
-assertEqual(result[2], "Now");
-
-//Test Case 2: Check original array
-let words = ['test', 'ahhh', 'nice'];
-tail(words);
-assertEqual(words.length, 3);
+describe('#tail', () => {
+  it('returns ["Eat, "Food", "Now"] for ["Hi", "Eat", "Food", "Now"]', () => {
+    assert.deepEqual(tail(["Hi", "Eat", "Food", "Now"]), ["Eat", "Food", "Now"]);
+  });
+});
