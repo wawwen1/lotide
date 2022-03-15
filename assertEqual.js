@@ -1,17 +1,9 @@
-let assertEqual = function(actual, expected) {
-  let failed = "😭😭 Assertion Failed: " + actual + " !== " + expected;
-  let pass = "🥰🥰 Assertion Passed: " + actual + " === " + expected;
+const assertEqual = (actual, expected) => {
   if (actual === expected) {
-    console.log(pass);
-    return;
+    console.log(`👍 [PASS] Assertion: ${actual} === ${expected}`);
   } else {
-    console.log(failed);
-    return;
+    console.log(`😭 [FAIL] Assertion: ${actual} !== ${expected}`);
   }
-
 };
 
-assertEqual("Sushi", "Sushi");
-assertEqual("Lighthouse Labs", "Bootcamp");
-assertEqual(1, 1);
-assertEqual(2, 17);
+module.exports = assertEqual;
